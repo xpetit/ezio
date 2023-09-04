@@ -27,7 +27,7 @@ import (
 	"math/big"
 	"os"
 
-	"github.com/akmistry/go-lz4"
+	"github.com/pierrec/lz4/v4"
 	"github.com/dsnet/compress/bzip2"
 	//	"github.com/DataDog/zstd"
 	"github.com/managata/zstd"
@@ -473,7 +473,6 @@ func UnZip(ci *CipherInfo, hash_bw_w io.Writer, zip_r *io.PipeReader, wc chan bo
 	case COMP_LZ4:
 		unzip_r := lz4.NewReader(zip_r)
 		io.Copy(hash_bw_w, unzip_r)
-		unzip_r.Close()
 	case COMP_XZ:
 		unzip_r, _ := xz.NewReader(zip_r)
 		io.Copy(hash_bw_w, unzip_r)

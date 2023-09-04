@@ -2,6 +2,12 @@
 
 'ezio' is a file archiver with modern cipher and compression.
 
+## Build
+
+```
+apt install liblzma-dev
+GOAMD64=v3 go build -tags netgo -ldflags '-w -s -X main.version=0.1.0 -extldflags -static'
+```
 
 ## Supported features:
 
